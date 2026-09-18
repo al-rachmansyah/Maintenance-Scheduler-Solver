@@ -1,0 +1,21 @@
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+.claude/
+
+# outputs/scenario_{A,B,C}/*.csv + report.json ARE committed on purpose — they
+# are Deliverable #1 ("Public Test Results", PS1_README.md §4 /
+# Project_Framework.md §1/§13): the primary (CP-SAT hybrid) engine's
+# pre-computed schedules for the provided dataset, proving the solver works
+# on known data. Regenerate with `python -m src.cpsat_engine <A|B|C>` before
+# committing, if src/ has changed since the last run.
+#
+# outputs/scenario_{A,B,C}_greedy_only/ is NOT committed — it's plain
+# greedy's own result in isolation, kept only for dev-time comparison
+# (tests/test_benchmark.py); cpsat_engine.schedule() already picks whichever
+# of {cpsat, greedy} scores better, so this would only ever duplicate or
+# lose to the committed result, never add information a judge needs.
+outputs/scenario_A_greedy_only/
+outputs/scenario_B_greedy_only/
+outputs/scenario_C_greedy_only/

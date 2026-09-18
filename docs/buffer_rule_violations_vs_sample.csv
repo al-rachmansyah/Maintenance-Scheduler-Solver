@@ -1,0 +1,47 @@
+pair_index,activity_a,contract_a,nature_a,buffer_a_sectors,seq_a_lo,seq_a_hi,activity_b,contract_b,nature_b,buffer_b_sectors,seq_b_lo,seq_b_hi,line,bound,week,conflict_location,same_contract,access_night_a,access_night_b,same_access_night
+1,A031,C005,Non-live (Consist),1,8,9,A046,C007,Non-live (Consist),1,7,7,ALP,WB,10,PLAT:ALP:S07:WB,False,,,unknown
+1,A031,C005,Non-live (Consist),1,8,9,A046,C007,Non-live (Consist),1,7,7,ALP,WB,11,PLAT:ALP:S07:WB,False,,,unknown
+2,A003,C001,Non-live (Consist),1,14,16,A041,C007,Non-live (Consist),1,16,16,BET,EB,11,SEC:BET:S15_S16:EB,False,,,unknown
+2,A003,C001,Non-live (Consist),1,14,16,A041,C007,Non-live (Consist),1,16,16,BET,EB,12,SEC:BET:S15_S16:EB,False,,,unknown
+3,A031,C005,Non-live (Consist),1,8,9,A069,C011,Non-live (Consist),1,3,5,ALP,WB,11,PLAT:ALP:S05:WB,False,,,unknown
+4,A046,C007,Non-live (Consist),1,7,7,A069,C011,Non-live (Consist),1,3,5,ALP,WB,11,SEC:ALP:H02_S05:WB,False,,,unknown
+4,A046,C007,Non-live (Consist),1,7,7,A069,C011,Non-live (Consist),1,3,5,ALP,WB,12,SEC:ALP:H02_S05:WB,False,,,unknown
+5,A003,C001,Non-live (Consist),1,14,16,A040,C007,Non-live (Consist),1,14,16,BET,EB,13,SEC:BET:S15_S16:EB,False,,,unknown
+5,A003,C001,Non-live (Consist),1,14,16,A040,C007,Non-live (Consist),1,14,16,BET,EB,14,SEC:BET:S15_S16:EB,False,,,unknown
+5,A003,C001,Non-live (Consist),1,14,16,A040,C007,Non-live (Consist),1,14,16,BET,EB,16,PLAT:BET:S16:EB,False,,,unknown
+6,A003,C001,Non-live (Consist),1,14,16,A007,C001,Non-live (Consist),1,14,14,BET,EB,16,PLAT:BET:S14:EB,True,3,1,False
+7,A003,C001,Non-live (Consist),1,14,16,A011,C002,Non-live (Consist),1,16,17,BET,EB,16,PLAT:BET:H02:EB,False,,,unknown
+8,A007,C001,Non-live (Consist),1,14,14,A011,C002,Non-live (Consist),1,16,17,BET,EB,16,PLAT:BET:S15:EB,False,,,unknown
+9,A007,C001,Non-live (Consist),1,14,14,A040,C007,Non-live (Consist),1,14,16,BET,EB,16,PLAT:BET:S14:EB,False,,,unknown
+9,A007,C001,Non-live (Consist),1,14,14,A040,C007,Non-live (Consist),1,14,16,BET,EB,17,PLAT:BET:S14:EB,False,,,unknown
+9,A007,C001,Non-live (Consist),1,14,14,A040,C007,Non-live (Consist),1,14,16,BET,EB,20,PLAT:BET:S14:EB,False,,,unknown
+9,A007,C001,Non-live (Consist),1,14,14,A040,C007,Non-live (Consist),1,14,16,BET,EB,22,PLAT:BET:S14:EB,False,,,unknown
+10,A011,C002,Non-live (Consist),1,16,17,A040,C007,Non-live (Consist),1,14,16,BET,EB,16,PLAT:BET:S16:EB,False,,,unknown
+11,A012,C002,Non-live (Consist),1,14,15,A021,C004,Non-live (Consist),1,10,11,BET,WB,16,PLAT:BET:S14:WB,False,,,unknown
+11,A012,C002,Non-live (Consist),1,14,15,A021,C004,Non-live (Consist),1,10,11,BET,WB,17,PLAT:BET:S14:WB,False,,,unknown
+12,A012,C002,Non-live (Consist),1,14,15,A049,C008,Non-live (Consist),1,15,16,BET,WB,16,PLAT:BET:S16:WB,False,,,unknown
+12,A012,C002,Non-live (Consist),1,14,15,A049,C008,Non-live (Consist),1,15,16,BET,WB,18,PLAT:BET:S16:WB,False,,,unknown
+12,A012,C002,Non-live (Consist),1,14,15,A049,C008,Non-live (Consist),1,15,16,BET,WB,20,PLAT:BET:S16:WB,False,,,unknown
+13,A008,C002,Non-live (Consist),1,18,18,A040,C007,Non-live (Consist),1,14,16,BET,EB,17,PLAT:BET:S16:EB,False,,,unknown
+13,A008,C002,Non-live (Consist),1,18,18,A040,C007,Non-live (Consist),1,14,16,BET,EB,20,PLAT:BET:S16:EB,False,,,unknown
+14,A002,C001,Non-live (Consist),1,10,11,A012,C002,Non-live (Consist),1,14,15,BET,WB,18,PLAT:BET:S14:WB,False,,,unknown
+15,A012,C002,Non-live (Consist),1,14,15,A065,C011,Non-live (Consist),1,11,11,BET,WB,20,PLAT:BET:S14:WB,False,,,unknown
+16,A004,C001,Non-live (Consist),1,3,4,A025,C004,Non-live (Consist),1,1,2,ALP,EB,21,PLAT:ALP:S04:EB,False,,,unknown
+17,A004,C001,Non-live (Consist),1,3,4,A074,C013,Live,2,5,5,ALP,EB,21,PLAT:ALP:S04:EB,False,,,unknown
+18,A025,C004,Non-live (Consist),1,1,2,A074,C013,Live,2,5,5,ALP,EB,21,SEC:ALP:S03_S04:EB,False,,,unknown
+19,A001,C001,Non-live (Consist),1,16,17,A007,C001,Non-live (Consist),1,14,14,BET,EB,22,PLAT:BET:S15:EB,True,3,3,True
+20,A001,C001,Non-live (Consist),1,16,17,A040,C007,Non-live (Consist),1,14,16,BET,EB,22,PLAT:BET:H02:EB,False,,,unknown
+21,A004,C001,Non-live (Consist),1,3,4,A009,C002,Non-live (Consist),1,7,7,ALP,EB,22,PLAT:ALP:H02:EB,False,,,unknown
+21,A004,C001,Non-live (Consist),1,3,4,A009,C002,Non-live (Consist),1,7,7,ALP,EB,23,PLAT:ALP:H02:EB,False,,,unknown
+22,A001,C001,Non-live (Consist),1,16,17,A011,C002,Non-live (Consist),1,16,17,BET,EB,23,PLAT:BET:H02:EB,False,,,unknown
+23,A001,C001,Non-live (Consist),1,16,17,A042,C007,Non-live (Consist),1,16,18,BET,EB,23,SEC:BET:S15_S16:EB,False,,,unknown
+24,A011,C002,Non-live (Consist),1,16,17,A042,C007,Non-live (Consist),1,16,18,BET,EB,23,SEC:BET:S15_S16:EB,False,,,unknown
+25,A042,C007,Non-live (Consist),1,16,18,A043,C007,Non-live (Consist),1,15,17,BET,EB,24,PLAT:BET:H02:EB,True,1,3,False
+26,A013,C002,Non-live (Consist),1,7,7,A046,C007,Non-live (Consist),1,7,7,ALP,WB,25,PLAT:ALP:S07:WB,False,,,unknown
+27,A013,C002,Non-live (Consist),1,7,7,A066,C011,Non-live (Consist),1,2,4,ALP,WB,25,PLAT:ALP:H02:WB,False,,,unknown
+28,A023,C004,Non-live (Consist),1,3,3,A066,C011,Non-live (Consist),1,2,4,ALP,WB,25,PLAT:ALP:H01:WB,False,,,unknown
+29,A040,C007,Non-live (Consist),1,14,16,A042,C007,Non-live (Consist),1,16,18,BET,EB,25,PLAT:BET:H02:EB,True,3,1,False
+30,A046,C007,Non-live (Consist),1,7,7,A066,C011,Non-live (Consist),1,2,4,ALP,WB,25,PLAT:ALP:H02:WB,False,,,unknown
+31,A013,C002,Non-live (Consist),1,7,7,A070,C011,Non-live (Consist),1,3,4,ALP,WB,26,PLAT:ALP:H02:WB,False,,,unknown
+32,A023,C004,Non-live (Consist),1,3,3,A070,C011,Non-live (Consist),1,3,4,ALP,WB,26,PLAT:ALP:H01:WB,False,,,unknown
+32,A023,C004,Non-live (Consist),1,3,3,A070,C011,Non-live (Consist),1,3,4,ALP,WB,27,PLAT:ALP:H01:WB,False,,,unknown

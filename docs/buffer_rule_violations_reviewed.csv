@@ -1,0 +1,47 @@
+pair_index,activity_a,activity_b,week,status,recomputed_overlap_count,recomputed_overlap_example,shared_group_locations,different_group_locations,connected_by_co_share,forced_same_night,different_local_nights_same_contract_type
+1,A031,A046,10,co_share_chain_exempt_if_global,5,PLAT:ALP:S05:WB,PLAT:ALP:S06:WB,,True,True,False
+1,A031,A046,11,co_share_chain_exempt_if_global,5,PLAT:ALP:S05:WB,PLAT:ALP:S06:WB,,True,True,False
+2,A003,A041,11,contradictory_possession_data,7,PLAT:BET:H02:EB,PLAT:BET:S15:EB,PLAT:BET:S16:EB | SEC:BET:S15_S16:EB,True,True,False
+2,A003,A041,12,contradictory_possession_data,7,PLAT:BET:H02:EB,PLAT:BET:S15:EB,PLAT:BET:S16:EB | SEC:BET:S15_S16:EB,True,True,False
+3,A031,A069,11,possible_conflict_night_unknown,1,PLAT:ALP:S05:WB,,,False,False,False
+4,A046,A069,11,possible_conflict_night_unknown,3,PLAT:ALP:H02:WB,,,False,False,False
+4,A046,A069,12,possible_conflict_night_unknown,3,PLAT:ALP:H02:WB,,,False,False,False
+5,A003,A040,13,contradictory_possession_data,11,PLAT:BET:H01:EB,PLAT:BET:H01:EB | PLAT:BET:H02:EB | PLAT:BET:S16:EB | SEC:BET:H01_H02:EB,PLAT:BET:S15:EB | SEC:BET:H02_S15:EB | SEC:BET:S15_S16:EB,True,True,False
+5,A003,A040,14,contradictory_possession_data,11,PLAT:BET:H01:EB,PLAT:BET:H01:EB | PLAT:BET:H02:EB | SEC:BET:H01_H02:EB,PLAT:BET:S15:EB | PLAT:BET:S16:EB | SEC:BET:H02_S15:EB | SEC:BET:S15_S16:EB,True,True,False
+5,A003,A040,16,contradictory_possession_data,11,PLAT:BET:H01:EB,PLAT:BET:H01:EB | PLAT:BET:H02:EB | PLAT:BET:S15:EB | SEC:BET:H01_H02:EB | SEC:BET:H02_S15:EB | SEC:BET:S15_S16:EB,PLAT:BET:S16:EB,True,True,False
+6,A003,A007,16,contradictory_possession_data,7,PLAT:BET:H01:EB,PLAT:BET:H01:EB | PLAT:BET:H02:EB | SEC:BET:H01_H02:EB,,True,True,True
+7,A003,A011,16,co_share_chain_exempt_if_global,7,PLAT:BET:H02:EB,PLAT:BET:S15:EB | PLAT:BET:S16:EB | SEC:BET:S15_S16:EB,,True,True,False
+8,A007,A011,16,co_share_chain_exempt_if_global,3,PLAT:BET:H02:EB,,,True,True,False
+9,A007,A040,16,co_share_chain_exempt_if_global,7,PLAT:BET:H01:EB,PLAT:BET:H01:EB | PLAT:BET:H02:EB | SEC:BET:H01_H02:EB,,True,True,False
+9,A007,A040,17,co_share_chain_exempt_if_global,7,PLAT:BET:H01:EB,PLAT:BET:H01:EB | PLAT:BET:H02:EB | SEC:BET:H01_H02:EB,,True,True,False
+9,A007,A040,20,co_share_chain_exempt_if_global,7,PLAT:BET:H01:EB,PLAT:BET:H01:EB | PLAT:BET:H02:EB | SEC:BET:H01_H02:EB,,True,True,False
+9,A007,A040,22,co_share_chain_exempt_if_global,7,PLAT:BET:H01:EB,PLAT:BET:H01:EB | PLAT:BET:H02:EB | SEC:BET:H01_H02:EB,,True,True,False
+10,A011,A040,16,contradictory_possession_data,7,PLAT:BET:H02:EB,PLAT:BET:S15:EB | SEC:BET:S15_S16:EB,PLAT:BET:S16:EB,True,True,False
+11,A012,A021,16,possible_conflict_night_unknown,1,PLAT:BET:S14:WB,,,False,False,False
+11,A012,A021,17,possible_conflict_night_unknown,1,PLAT:BET:S14:WB,,,False,False,False
+12,A012,A049,16,co_share_chain_exempt_if_global,7,PLAT:BET:H01:WB,PLAT:BET:H02:WB | PLAT:BET:S15:WB | SEC:BET:H02_S15:WB,,True,True,False
+12,A012,A049,18,contradictory_possession_data,7,PLAT:BET:H01:WB,PLAT:BET:H02:WB | PLAT:BET:S15:WB,SEC:BET:H02_S15:WB,True,True,False
+12,A012,A049,20,contradictory_possession_data,7,PLAT:BET:H01:WB,PLAT:BET:H02:WB,PLAT:BET:S15:WB | SEC:BET:H02_S15:WB,True,True,False
+13,A008,A040,17,possible_conflict_night_unknown,3,PLAT:BET:S16:EB,,,False,False,False
+13,A008,A040,20,possible_conflict_night_unknown,3,PLAT:BET:S16:EB,,,False,False,False
+14,A002,A012,18,possible_conflict_night_unknown,1,PLAT:BET:S14:WB,,,False,False,False
+15,A012,A065,20,possible_conflict_night_unknown,1,PLAT:BET:S14:WB,,,False,False,False
+16,A004,A025,21,co_share_chain_exempt_if_global,5,PLAT:ALP:S02:EB,PLAT:ALP:S03:EB,,True,True,False
+17,A004,A074,21,co_share_chain_exempt_if_global,7,PLAT:ALP:H01:EB,PLAT:ALP:H01:EB,,True,True,False
+18,A025,A074,21,co_share_chain_exempt_if_global,3,PLAT:ALP:S03:EB,,,True,True,False
+19,A001,A007,22,co_share_chain_exempt_if_global,3,PLAT:BET:H02:EB,,,True,True,False
+20,A001,A040,22,co_share_chain_exempt_if_global,7,PLAT:BET:H02:EB,PLAT:BET:S15:EB | PLAT:BET:S16:EB | SEC:BET:S15_S16:EB,,True,True,False
+21,A004,A009,22,possible_conflict_night_unknown,1,PLAT:ALP:H02:EB,,,False,False,False
+21,A004,A009,23,possible_conflict_night_unknown,1,PLAT:ALP:H02:EB,,,False,False,False
+22,A001,A011,23,contradictory_possession_data,9,PLAT:BET:H02:EB,PLAT:BET:S16:EB | PLAT:BET:S17:EB | SEC:BET:S15_S16:EB | SEC:BET:S16_S17:EB,PLAT:BET:S15:EB,True,True,False
+23,A001,A042,23,contradictory_possession_data,9,PLAT:BET:H02:EB,,PLAT:BET:S15:EB | PLAT:BET:S16:EB | PLAT:BET:S17:EB | SEC:BET:S15_S16:EB | SEC:BET:S16_S17:EB,True,True,False
+24,A011,A042,23,contradictory_possession_data,9,PLAT:BET:H02:EB,PLAT:BET:S15:EB,PLAT:BET:S16:EB | PLAT:BET:S17:EB | SEC:BET:S15_S16:EB | SEC:BET:S16_S17:EB,True,True,False
+25,A042,A043,24,contradictory_possession_data,9,PLAT:BET:H02:EB,PLAT:BET:S15:EB | PLAT:BET:S16:EB | PLAT:BET:S17:EB | SEC:BET:S15_S16:EB | SEC:BET:S16_S17:EB,,True,True,True
+26,A013,A046,25,co_share_chain_exempt_if_global,7,PLAT:ALP:H02:WB,PLAT:ALP:S05:WB | PLAT:ALP:S06:WB | SEC:ALP:S05_S06:WB,,True,True,False
+27,A013,A066,25,possible_conflict_night_unknown,1,PLAT:ALP:H02:WB,,,False,False,False
+28,A023,A066,25,co_share_chain_exempt_if_global,7,PLAT:ALP:H01:WB,PLAT:ALP:S03:WB | PLAT:ALP:S04:WB | SEC:ALP:S03_S04:WB,,True,True,False
+29,A040,A042,25,contradictory_possession_data,7,PLAT:BET:H02:EB,PLAT:BET:S15:EB | PLAT:BET:S16:EB | SEC:BET:S15_S16:EB,,True,True,True
+30,A046,A066,25,possible_conflict_night_unknown,1,PLAT:ALP:H02:WB,,,False,False,False
+31,A013,A070,26,possible_conflict_night_unknown,1,PLAT:ALP:H02:WB,,,False,False,False
+32,A023,A070,26,contradictory_possession_data,7,PLAT:ALP:H01:WB,SEC:ALP:S03_S04:WB,PLAT:ALP:S03:WB | PLAT:ALP:S04:WB,True,True,False
+32,A023,A070,27,contradictory_possession_data,7,PLAT:ALP:H01:WB,PLAT:ALP:S03:WB | PLAT:ALP:S04:WB,SEC:ALP:S03_S04:WB,True,True,False

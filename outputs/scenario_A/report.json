@@ -1,0 +1,658 @@
+{
+  "scenario": "A",
+  "feasible": true,
+  "hard_violations": [],
+  "soft_scores": {
+    "scenario": "A",
+    "overrun_days_total": 0,
+    "contracts_overrunning": 0,
+    "earliness_days_total": 329,
+    "excess_access_nights_total": 0,
+    "eclo_nights_total": 0,
+    "priority_overrun": {
+      "1": 0,
+      "2": 0,
+      "3": 0
+    },
+    "priority_weighted_score": 0.0
+  },
+  "detail": {
+    "capacity_hotspots": [
+      {
+        "location_id": "PLAT:BET:S16:EB",
+        "week": 11,
+        "slots_used": 2,
+        "supply_capacity": 2,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:BET:S15:EB",
+        "week": 15,
+        "slots_used": 2,
+        "supply_capacity": 2,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:BET:S16:EB",
+        "week": 15,
+        "slots_used": 2,
+        "supply_capacity": 2,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:ALP:H01:WB",
+        "week": 2,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:ALP:H02:WB",
+        "week": 2,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "SEC:ALP:H01_H02:WB",
+        "week": 2,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:BET:H01:WB",
+        "week": 2,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:BET:H02:WB",
+        "week": 2,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "SEC:BET:H01_H02:WB",
+        "week": 2,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:ALP:H01:WB",
+        "week": 3,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:ALP:H02:WB",
+        "week": 3,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "SEC:ALP:H01_H02:WB",
+        "week": 3,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:BET:H01:WB",
+        "week": 4,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:BET:H02:WB",
+        "week": 4,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "SEC:BET:H01_H02:WB",
+        "week": 4,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:ALP:H01:WB",
+        "week": 4,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:ALP:H02:WB",
+        "week": 4,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "SEC:ALP:H01_H02:WB",
+        "week": 4,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:BET:H01:EB",
+        "week": 4,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:BET:H02:EB",
+        "week": 4,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "SEC:BET:H01_H02:EB",
+        "week": 4,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:BET:H01:WB",
+        "week": 5,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:BET:H02:WB",
+        "week": 5,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "SEC:BET:H01_H02:WB",
+        "week": 5,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:BET:H01:EB",
+        "week": 5,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:BET:H02:EB",
+        "week": 5,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "SEC:BET:H01_H02:EB",
+        "week": 5,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:BET:H01:EB",
+        "week": 6,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:BET:H02:EB",
+        "week": 6,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "SEC:BET:H01_H02:EB",
+        "week": 6,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:BET:H02:WB",
+        "week": 8,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:BET:H02:WB",
+        "week": 9,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:BET:H01:EB",
+        "week": 11,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:BET:H02:EB",
+        "week": 11,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "SEC:BET:H01_H02:EB",
+        "week": 11,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:ALP:H01:EB",
+        "week": 11,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:ALP:H01:WB",
+        "week": 11,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:BET:H01:EB",
+        "week": 12,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:BET:H02:EB",
+        "week": 12,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "SEC:BET:H01_H02:EB",
+        "week": 12,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:ALP:H01:WB",
+        "week": 12,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:ALP:H02:WB",
+        "week": 12,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "SEC:ALP:H01_H02:WB",
+        "week": 12,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:ALP:H01:WB",
+        "week": 13,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:ALP:H02:WB",
+        "week": 13,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "SEC:ALP:H01_H02:WB",
+        "week": 13,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:BET:H01:EB",
+        "week": 13,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:BET:H02:EB",
+        "week": 13,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "SEC:BET:H01_H02:EB",
+        "week": 13,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:ALP:H02:EB",
+        "week": 13,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:BET:H01:EB",
+        "week": 14,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:BET:H02:EB",
+        "week": 14,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "SEC:BET:H01_H02:EB",
+        "week": 14,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:ALP:H01:EB",
+        "week": 15,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:BET:H01:EB",
+        "week": 15,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:BET:H02:EB",
+        "week": 15,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "SEC:BET:H01_H02:EB",
+        "week": 15,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:BET:H01:EB",
+        "week": 16,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:BET:H02:EB",
+        "week": 16,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "SEC:BET:H01_H02:EB",
+        "week": 16,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:BET:H01:EB",
+        "week": 17,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:BET:H02:EB",
+        "week": 17,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "SEC:BET:H01_H02:EB",
+        "week": 17,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:ALP:H01:WB",
+        "week": 17,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:ALP:H01:EB",
+        "week": 17,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:ALP:H02:EB",
+        "week": 17,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "SEC:ALP:H01_H02:EB",
+        "week": 17,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:BET:H01:EB",
+        "week": 18,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:BET:H02:EB",
+        "week": 18,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "SEC:BET:H01_H02:EB",
+        "week": 18,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:ALP:H02:WB",
+        "week": 18,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:BET:H01:EB",
+        "week": 19,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:BET:H02:EB",
+        "week": 19,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "SEC:BET:H01_H02:EB",
+        "week": 19,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:ALP:H01:EB",
+        "week": 19,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:ALP:H02:EB",
+        "week": 19,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "SEC:ALP:H01_H02:EB",
+        "week": 19,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:BET:H02:EB",
+        "week": 20,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:BET:H01:EB",
+        "week": 22,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:BET:H02:EB",
+        "week": 22,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "SEC:BET:H01_H02:EB",
+        "week": 22,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:BET:H01:EB",
+        "week": 23,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:ALP:H01:EB",
+        "week": 23,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:ALP:H02:EB",
+        "week": 23,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "SEC:ALP:H01_H02:EB",
+        "week": 23,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:BET:H01:EB",
+        "week": 24,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:BET:H01:WB",
+        "week": 24,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:BET:H02:WB",
+        "week": 24,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "SEC:BET:H01_H02:WB",
+        "week": 24,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      },
+      {
+        "location_id": "PLAT:ALP:H01:WB",
+        "week": 25,
+        "slots_used": 1,
+        "supply_capacity": 1,
+        "excess": 0
+      }
+    ],
+    "nights_scheduled": 192,
+    "eclo_nights": 0,
+    "buffer_proximity_pairs": []
+  },
+  "objective_score": 0.0,
+  "formula_version": "self_check-2026-09-18"
+}
