@@ -2,3 +2,13 @@ numpy==2.4.6
 ortools==9.15.6755
 pandas==3.0.6
 protobuf==6.33.6
+
+# For app/server.py's optional /api/chat endpoint (grounded in a live solve() —
+# see webapp/README.md for the original design this was ported from). The app
+# runs fine without these; /api/chat just reports itself unavailable.
+python-dotenv==1.2.3
+google-genai==2.24.0
+
+# For app/server.py's optional GCS-backed dataset persistence (only used when the
+# GCS_BUCKET env var is set, e.g. on Cloud Run). No-ops locally without it.
+google-cloud-storage==2.19.0

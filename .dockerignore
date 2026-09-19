@@ -1,0 +1,15 @@
+.git
+.venv
+__pycache__
+*.pyc
+.DS_Store
+.claude
+.env
+.env.example
+outputs
+docs
+tests
+webapp
+render.yaml
+CLAUDE.md
+README.md
