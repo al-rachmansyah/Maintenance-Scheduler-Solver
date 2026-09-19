@@ -137,6 +137,46 @@ them as decisions evolve.
 
 ## Settled
 
+- **Phase 6 explainability rebuilt to give CAUSES, generally (2026-09-20)** —
+  user asked for a comprehensive, dataset-independent implementation after a
+  review found the first version (`explain.py`) only reported *what* (an
+  activity started N weeks after its earliest legal week) and never *why*, as
+  Project_Framework §8.7 requires ("delayed because location X was at full
+  capacity in week W, shared with A and B"), and never explained contract
+  overruns at all (the summary showed unrelated start delays instead).
+  - **Method** (see `explain.py`'s docstring): causes are reconstructed from the
+    final schedule by re-asking `constraints.check_all` — the single rule
+    oracle — whether the activity could have worked in each week it did not,
+    with its own accesses removed, over every access-night and standard/ECLO
+    variant. Rules failing in all variants are the cause. To name them without
+    parsing strings, `LegalityResult` gained two optional fields (`location`,
+    `blockers`), filled by the capacity, legal-mix, Live-closure, weekly-
+    allocation, workfront and predecessor checks. No rule is reimplemented.
+  - **What it explains**: late starts (rule + location + blocking activities,
+    with contract priority; or "nothing blocked it" / "soft buffer preference"),
+    predecessor gating, contract overruns (classified *structural* = provably
+    unavoidable by an optimistic bound, *contention*, or *pace* = free nights
+    unused), ECLO nights (forced by deadline arithmetic or not) and excess
+    capacity with their costs, and hard violations grouped by rule for
+    infeasible schedules. Output adds `events`, `by_activity`, `by_contract`,
+    `contract_outcomes`; `api.solve()` puts each activity's text in
+    `activity_timeline["explanation"]`.
+  - **A finding it surfaced**: on the organizer's own sample, C006 and C010
+    overrun because one long activity used ONE night a week although the
+    contract allows three and the extra nights were still legal — a "pace"
+    overrun, not a hard limit (consistent with the one-access-per-week
+    analysis above). Also, most of the sample's long start delays were not
+    caused by any rule we check.
+  - **Judgment calls / limits**, all in the module docstring: causes describe the
+    final schedule, not the scheduler's decision order; "structural" uses an
+    optimistic lower bound; scenario-lever sentences state what the scenario
+    allows, not proof of a comparison; summary is bounded (16 lines) but
+    `events` is complete.
+  - **Tests** (`tests/test_explain.py`): consistency with `self_check` on the
+    sample and greedy A/B/C, plus strict-A overruns (structural), strict-B ECLO
+    and excess capacity, synthetic violations, an injected-violation infeasible
+    schedule, and a modified instance (14 activities removed) on all scenarios.
+
 - **Test coverage gap closed + full regeneration verified (2026-09-20)** —
   user asked to (1) make sure all 3 scenarios are tested properly and
   (2) confirm the exact regeneration procedure from a deleted `outputs/`.

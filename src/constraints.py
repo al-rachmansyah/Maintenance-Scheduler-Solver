@@ -199,14 +199,18 @@ class LegalityResult:
     rule: str  # short tag; mirrors PS1_README §2.7's report tags where one exists
     reason: str = ""
     excess: float = 0.0  # only meaningful for check_capacity
+    # Structured cause data for src/explain.py (added with the Phase 6 rewrite): WHERE the rule bit
+    # and WHICH activities were responsible, so explanations never have to parse `reason` strings.
+    location: str = ""
+    blockers: tuple = ()  # activity_ids
 
     @staticmethod
     def ok(rule: str) -> "LegalityResult":
         return LegalityResult(True, rule)
 
     @staticmethod
-    def fail(rule: str, reason: str, excess: float = 0.0) -> "LegalityResult":
-        return LegalityResult(False, rule, reason, excess)
+    def fail(rule: str, reason: str, excess: float = 0.0, location: str = "", blockers: tuple = ()) -> "LegalityResult":
+        return LegalityResult(False, rule, reason, excess, location, tuple(blockers))
 
 
 # ----------------------------------------------------------------------
@@ -581,15 +585,16 @@ def check_legal_mix(candidate: ScheduledAccess, state: ScheduleState) -> Legalit
         type_by_activity[candidate.activity_id] = candidate.access_type
         types = list(type_by_activity.values())
         pm, pc, c = types.count("PM"), types.count("PC"), types.count("C")
+        others = tuple(sorted(a for a in type_by_activity if a != candidate.activity_id))
         if pm:
             if pm > 1 or pc or c:
-                return LegalityResult.fail("legal_mix", f"{loc}/wk{candidate.week}/{group}: PM must be alone (found PM={pm} PC={pc} C={c})")
+                return LegalityResult.fail("legal_mix", f"{loc}/wk{candidate.week}/{group}: PM must be alone (found PM={pm} PC={pc} C={c})", location=loc, blockers=others)
         elif pc:
             if pc > 1 or c > 3:
-                return LegalityResult.fail("legal_mix", f"{loc}/wk{candidate.week}/{group}: max 1 PC + 3 C (found PC={pc} C={c})")
+                return LegalityResult.fail("legal_mix", f"{loc}/wk{candidate.week}/{group}: max 1 PC + 3 C (found PC={pc} C={c})", location=loc, blockers=others)
         else:
             if c > 4:
-                return LegalityResult.fail("legal_mix", f"{loc}/wk{candidate.week}/{group}: max 4 C (found C={c})")
+                return LegalityResult.fail("legal_mix", f"{loc}/wk{candidate.week}/{group}: max 4 C (found C={c})", location=loc, blockers=others)
     return LegalityResult.ok("legal_mix")
 
 
@@ -622,7 +627,8 @@ def check_capacity(candidate: ScheduledAccess, state: ScheduleState, scenario: S
     else:  # unlimited_soft
         legal = True
 
-    result = LegalityResult(legal, "capacity", f"{worst_loc}/wk{candidate.week}: {worst_excess} slot(s) over supply_capacity", excess=worst_excess)
+    occupants = tuple(sorted({a.activity_id for a in state.at_location_week(worst_loc, candidate.week) if a.activity_id != candidate.activity_id}))
+    result = LegalityResult(legal, "capacity", f"{worst_loc}/wk{candidate.week}: {worst_excess} slot(s) over supply_capacity", excess=worst_excess, location=worst_loc, blockers=occupants)
     return result
 
 
@@ -819,7 +825,7 @@ def check_live_mirroring(candidate: ScheduledAccess, state: ScheduleState, insta
         other_zone = _closure_zone(other, instance)
         conflict = _zone_conflict(candidate, other, cand_zone, other_zone)
         if conflict is not None:
-            return LegalityResult.fail("closure", f"{candidate.activity_id} collides with Live activity {other.activity_id}'s mirror/crossover at {conflict}/wk{candidate.week}")
+            return LegalityResult.fail("closure", f"{candidate.activity_id} collides with Live activity {other.activity_id}'s mirror/crossover at {conflict}/wk{candidate.week}", location=conflict, blockers=(other.activity_id,))
     return LegalityResult.ok("closure")
 
 
@@ -872,6 +878,7 @@ def check_weekly_allocation_and_workfronts(candidate: ScheduledAccess, state: Sc
         return LegalityResult.fail(
             "weekly_allocation",
             f"{candidate.contract_number} wk{candidate.week}: {len(distinct_nights)} distinct access_nights > cap {cap}",
+            blockers=tuple(sorted({a.activity_id for a in existing if a.activity_id != candidate.activity_id})),
         )
 
     same_night = [a for a in existing if a.access_night == candidate.access_night]
@@ -882,6 +889,7 @@ def check_weekly_allocation_and_workfronts(candidate: ScheduledAccess, state: Sc
             "workfront",
             f"{candidate.contract_number} wk{candidate.week} night{candidate.access_night}: "
             f"{len(distinct_activities)} concurrent activities > {workfronts} workfronts",
+            blockers=tuple(sorted(distinct_activities - {candidate.activity_id})),
         )
     return LegalityResult.ok("weekly_allocation")
 
@@ -918,11 +926,11 @@ def check_predecessor_completion(candidate: ScheduledAccess, state: ScheduleStat
     yield_done = _activity_yield(pred_id, state)
 
     if yield_done < pred_total_needed:
-        return LegalityResult.fail("predecessor", f"{candidate.activity_id}'s predecessor {pred_id} not yet fully complete ({yield_done}/{pred_total_needed})")
+        return LegalityResult.fail("predecessor", f"{candidate.activity_id}'s predecessor {pred_id} not yet fully complete ({yield_done}/{pred_total_needed})", blockers=(pred_id,))
 
     pred_last_week = max(a.week for a in pred_accesses)
     if candidate.week <= pred_last_week:
-        return LegalityResult.fail("predecessor", f"{candidate.activity_id} wk{candidate.week} not after predecessor {pred_id}'s last week {pred_last_week}")
+        return LegalityResult.fail("predecessor", f"{candidate.activity_id} wk{candidate.week} not after predecessor {pred_id}'s last week {pred_last_week}", blockers=(pred_id,))
     return LegalityResult.ok("predecessor")
 
 

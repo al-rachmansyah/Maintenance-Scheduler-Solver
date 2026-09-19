@@ -448,6 +448,10 @@ def solve(
         report = build_report(instance, out, scenario=config)
         explanation = build_explanation(instance, out, scenario=config)
 
+    timeline = build_activity_timeline(instance, state)
+    if not timeline.empty:  # surface the per-activity sentences right next to each activity (Project_Framework §8.7)
+        timeline["explanation"] = timeline["activity_id"].map(lambda a: " ".join(explanation["by_activity"].get(a, [])))
+
     return SolveResult(
         scenario=scenario,
         engine_requested=engine,
@@ -460,7 +464,7 @@ def solve(
         schedule_access=access_df,
         schedule_occupancy=occupancy_df,
         results=results_df,
-        activity_timeline=build_activity_timeline(instance, state),
+        activity_timeline=timeline,
         state=state,
         elapsed_seconds=elapsed,
         warnings=warnings,

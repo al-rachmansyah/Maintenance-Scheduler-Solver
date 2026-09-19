@@ -104,6 +104,7 @@ from src.constraints import (
     week_end_date,
 )
 
+TIER_WEIGHT = {1: 100, 2: 10, 3: 1}  # PS1_README §2.5 per-overrun-day weight by contract_priority; also used by src/explain.py
 FORMULA_VERSION = "self_check-2026-09-18"  # bumped if the §2.5/§2.7 scoring interpretation above changes
 
 
@@ -290,7 +291,7 @@ def compute_soft_scores(state: ScheduleState, instance: Instance, scenario_name:
     contracts_overrunning = 0
     priority_overrun = {"1": 0, "2": 0, "3": 0}
     priority_weighted_score = 0.0
-    tier_weight = {1: 100, 2: 10, 3: 1}
+    tier_weight = TIER_WEIGHT
 
     for contract_number, raw_days in overrun_by_contract.items():
         # raw_days is the unclamped signed diff from _contract_overrun_days;

@@ -326,11 +326,22 @@ is what it should import). `src/explain.py` exists (Phase 6).
       nothing about correctness (same 34 known "closure" discrepancies,
       zero others, before and after).
 - [ ] Phase 4 (optional) — local-search polish
-- [x] Phase 6 — `src/explain.py` (`python -m src.explain <submission_dir>`).
-      Reframed since every scenario is at 0 overrun: narrates capacity
-      pressure (binding vs. exactly-full location-weeks), scenario
-      soft-cost trade-offs, and per-activity placement vs. earliest legal
-      week, reusing `self_check.py`'s data (no reimplemented analysis).
+- [x] Phase 6 — `src/explain.py` (`python -m src.explain <submission_dir>
+      [--all]`). **Rebuilt 2026-09-20 to explain CAUSES, generally** (the
+      first version only said what happened, never why — a gap vs.
+      Project_Framework §8.7): reconstructs why an activity could not work
+      in a week by re-asking `constraints.check_all` (the single rule
+      oracle; `LegalityResult` now carries `location`/`blockers`), and
+      explains late starts (rule + location + blocking activities), contract
+      overruns (structural / contention / pace, with priority-weighted cost),
+      ECLO and excess-capacity use, and hard violations of infeasible
+      schedules. Output: `events`, `by_activity`, `by_contract`,
+      `contract_outcomes`, bounded `summary`; `api.solve()` puts each
+      activity's text in `activity_timeline["explanation"]`. See
+      docs/decisions.md for the method, limits and findings. Original
+      version (below) narrated capacity pressure (binding vs. exactly-full
+      location-weeks), scenario soft-cost trade-offs, and per-activity
+      placement vs. earliest legal week, reusing `self_check.py`'s data.
       Validated by `tests/test_explain.py`. **Building it exposed and
       fixed a real bug**: `excess_access_nights_total` was overcounted
       (per-candidate replay sum instead of end-state per-location-week

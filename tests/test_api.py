@@ -88,6 +88,7 @@ def main():
             check(set(result.results.columns) == {"scenario", "contract_number", "simulated_completion_date", "overrun_days"}, f"[{scenario_name}/{engine}] RESULTS.csv columns match §2.6")
             check(len(result.activity_timeline) == len(instance.activities), f"[{scenario_name}/{engine}] activity_timeline has one row per activity")
             check(result.metrics["objective_score"] == result.objective_score, f"[{scenario_name}/{engine}] metrics/objective_score agree")
+            check("explanation" in result.activity_timeline.columns and result.activity_timeline["explanation"].str.len().min() > 0, f"[{scenario_name}/{engine}] every activity_timeline row carries its explanation text")
             check(result.results["scenario"].eq(scenario_name).all(), f"[{scenario_name}/{engine}] RESULTS.csv rows all tag the requested scenario")
 
         # cross-check greedy's own numbers against calling greedy_scheduler + self_check directly
