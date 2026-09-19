@@ -106,10 +106,8 @@
   /* ---------- Header ---------- */
   .topbar{
     display:flex;
-    flex-wrap:wrap;
-    align-items:flex-end;
-    justify-content:space-between;
-    gap:16px;
+    flex-direction:column;
+    gap:12px;
   }
   .brand{display:flex;align-items:center;gap:12px;}
   .brand-mark{
@@ -131,7 +129,8 @@
     font-size:12px;
     color:var(--text-muted);
   }
-  .header-controls{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+  .header-controls{display:flex;align-items:center;gap:16px;flex-wrap:wrap;justify-content:space-between;}
+  .header-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end;}
   .scenario-tabs{
     display:flex;
     gap:6px;
@@ -834,19 +833,21 @@
     </div>
     <div class="header-controls">
       <div class="scenario-tabs" id="scenarioTabs" role="tablist"></div>
-      <button class="reschedule-btn" id="uploadBtn" type="button">
-        <span class="msi">upload_file</span> Upload dataset
-      </button>
-      <button class="reschedule-btn" id="resetBtn" type="button" title="Clear the loaded dataset and start over" hidden>
-        <span class="msi">restart_alt</span> Reset
-      </button>
-      <button class="reschedule-btn" id="exportBtn" type="button" title="Download all scenarios' output files (CSV + report.json) as a zip" hidden>
-        <span class="msi">download</span> Export
-      </button>
-      <button class="reschedule-btn" id="rescheduleBtn" type="button">
-        <span class="icon msi">autorenew</span><span class="spin"></span>
-        <span id="rescheduleLabel">Reschedule</span>
-      </button>
+      <div class="header-actions">
+        <button class="reschedule-btn" id="uploadBtn" type="button">
+          <span class="msi">upload_file</span> Upload dataset
+        </button>
+        <button class="reschedule-btn" id="resetBtn" type="button" title="Clear the loaded dataset and start over" hidden>
+          <span class="msi">restart_alt</span> Reset
+        </button>
+        <button class="reschedule-btn" id="exportBtn" type="button" title="Download all scenarios' output files (CSV + report.json) as a zip" hidden>
+          <span class="msi">download</span> Export
+        </button>
+        <button class="reschedule-btn" id="rescheduleBtn" type="button">
+          <span class="icon msi">autorenew</span><span class="spin"></span>
+          <span id="rescheduleLabel">Reschedule</span>
+        </button>
+      </div>
     </div>
   </header>
 
