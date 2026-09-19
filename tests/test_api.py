@@ -119,6 +119,23 @@ def main():
     default = solve(instance, "B", engine="greedy")
     check(not default.warnings, "the default permissive config produces no warnings on the sample instance")
 
+    # --- CLI on "someone else's data": `python -m src.api <dir> all --out <dir>` ---
+    import shutil
+    import tempfile as _tempfile
+
+    from src.api import main as api_cli
+
+    with _tempfile.TemporaryDirectory() as tmp:
+        own_data = Path(tmp) / "own_data"
+        shutil.copytree(DATA_DIR, own_data)
+        out_root = Path(tmp) / "results"
+        code = api_cli([str(own_data), "all", "--out", str(out_root)])
+        check(code == 0, "CLI: `<dir> all` exits 0 when every scenario is feasible")
+        for s in ("A", "B", "C"):
+            produced = {p.name for p in (out_root / f"scenario_{s}").glob("*")}
+            check(produced == {"SCHEDULE_ACCESS.csv", "SCHEDULE_OCCUPANCY.csv", "RESULTS.csv", "report.json"}, f"CLI: scenario_{s} has the 3 CSVs + report.json")
+        check(api_cli([str(Path(tmp) / "does_not_exist"), "A"]) == 2, "CLI: a non-directory path exits 2 with a clean error")
+
     if failures:
         print(f"\n{len(failures)} FAILURE(S):")
         for f in failures:

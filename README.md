@@ -88,6 +88,49 @@ pip install -r requirements.txt
 sample, greedy, and CP-SAT, for all 3 scenarios) is a separate evaluation
 script, not part of the fast suite — run it on demand.
 
+## Running on your own input data (testers: start here)
+
+Put your 8 instance CSVs in one folder, named exactly like the sample's
+(`01_LINES.csv`, `02_STATIONS.csv`, `03_SECTORS.csv`, `04_LOCATION_SUPPLY.csv`,
+`05_BUFFER_LOCATION.csv`, `06_PARAMETERS.csv`, `07_PROJECT_DETAILS.csv`,
+`08_ACTIVITY_DETAILS.csv` — the sample is in `data/sample_instance/01_data/`).
+Then run **one command** from the repo root:
+
+```powershell
+python -m src.api path\to\your_data all
+```
+
+That solves **all three scenarios** and writes, for each, exactly what
+PS1_README §2.6/§2.7 asks for:
+
+```
+outputs/your_data/scenario_A/   SCHEDULE_ACCESS.csv  SCHEDULE_OCCUPANCY.csv  RESULTS.csv  report.json
+outputs/your_data/scenario_B/   (same 4 files)
+outputs/your_data/scenario_C/   (same 4 files)
+```
+
+(`report.json` is the §2.7 output report: `feasible`, `hard_violations`,
+`soft_scores`, `objective_score`, ...). It also prints a plain-English
+summary per scenario. Useful options:
+
+| Option | Meaning |
+|---|---|
+| `A`, `B` or `C` instead of `all` | one scenario only |
+| `--out some\folder` | write results under `some\folder\scenario_<X>\` instead |
+| `--engine greedy` | use only the fast greedy safety net (default `cpsat` = best of CP-SAT and greedy) |
+| `--time-limit 60` | give CP-SAT more seconds (default 20) |
+
+Your results go to `outputs/<your folder name>/` — **never** over the
+committed sample results in `outputs/scenario_{A,B,C}/`. Exit code: `0` if
+every requested scenario is feasible, `1` if any isn't, `2` if the input is
+invalid (missing file/column, dangling reference, predecessor cycle — the
+message says exactly what). Prefer a UI? The web app calls the same code
+(`src.api.solve`).
+
+> `python -m src.cpsat_engine A` / `python -m src.greedy_scheduler A` (Quickstart
+> above) only ever read the bundled sample — they regenerate our committed
+> Public Test Results and can't take another folder. Use `src.api` for any other data.
+
 ## How it works
 
 ```mermaid
@@ -212,7 +255,8 @@ st.download_button("Download submission (zip)", result.to_zip_bytes(), "submissi
 - `result.files()` / `result.to_zip_bytes()` / `result.write(path)` give you
   the 3 submission CSVs (plus a `report.json`) in whatever shape you need
   for a download button or to save to disk.
-- CLI sanity-check without any UI: `python -m src.api sample A`.
+- CLI without any UI, on any data folder: `python -m src.api <folder> all`
+  (see [Running on your own input data](#running-on-your-own-input-data-testers-start-here)).
 
 Everything is in-memory — no working-directory assumptions — so it's safe
 to call from a Streamlit script on every rerun.

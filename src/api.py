@@ -468,45 +468,59 @@ def solve(
 
 
 # ----------------------------------------------------------------------
-# CLI — `python -m src.api <instance_dir|sample> <A|B|C> [options]`
+# CLI — `python -m src.api <instance_dir|sample> <A|B|C|all> [options]`
 # ----------------------------------------------------------------------
 
 
 def main(argv: list[str] | None = None) -> int:
     import argparse
 
-    parser = argparse.ArgumentParser(description="Solve a track-access instance and write the 3 submission CSVs.")
-    parser.add_argument("instance", help="directory holding the 8 instance CSVs, or 'sample' for the bundled dataset")
-    parser.add_argument("scenario", choices=sorted(SCENARIO_CONFIGS))
+    parser = argparse.ArgumentParser(description="Solve a track-access instance (the 8 input CSVs) and write the 3 submission CSVs + report.json per scenario.")
+    parser.add_argument("instance", help="directory holding the 8 instance CSVs (e.g. my_data/), or 'sample' for the bundled dataset")
+    parser.add_argument("scenario", choices=sorted(SCENARIO_CONFIGS) + ["all"], help="A, B, C, or 'all' for all three")
     parser.add_argument("--engine", choices=ENGINES, default="cpsat")
     parser.add_argument("--time-limit", type=float, default=20.0, help="CP-SAT time limit in seconds")
-    parser.add_argument("--out", type=Path, default=None, help="output directory (default: outputs/scenario_<X>, or outputs/scenario_<X>_greedy_only for --engine greedy)")
+    parser.add_argument(
+        "--out",
+        type=Path,
+        default=None,
+        help="output ROOT directory; results go to <out>/scenario_<X>/. Default: outputs/ for 'sample', outputs/<instance folder name>/ for your own data (never overwrites the committed sample results)",
+    )
     parser.add_argument("--strict-one-access-per-week", action="store_true", help="opt into the literal, universal reading of PS1_README §2.4 rule 10 (scores worse; permissive is the default — see docs/decisions.md)")
     args = parser.parse_args(argv)
 
     try:
         if args.instance == "sample":
             instance = load_sample_instance()
+            default_root = Path("outputs")
         else:
             folder = Path(args.instance)
+            if not folder.is_dir():
+                print(f"ERROR: '{args.instance}' is not a directory. Pass the folder that contains the 8 instance CSVs (01_LINES.csv ... 08_ACTIVITY_DETAILS.csv).")
+                return 2
             instance = load_instance_from_uploads({p.name: p for p in folder.glob("*.csv")})
-        result = solve(instance, args.scenario, args.engine, args.time_limit, args.strict_one_access_per_week)
+            default_root = Path("outputs") / folder.resolve().name  # own data must never overwrite the committed sample results
+        out_root = args.out or default_root
+        suffix = "_greedy_only" if args.engine == "greedy" else ""  # cpsat (primary) has no suffix — see src/cpsat_engine.py main()
+
+        exit_code = 0
+        for scenario_name in (sorted(SCENARIO_CONFIGS) if args.scenario == "all" else [args.scenario]):
+            result = solve(instance, scenario_name, args.engine, args.time_limit, args.strict_one_access_per_week)
+            out_dir = out_root / f"scenario_{scenario_name}{suffix}"
+            result.write(out_dir)
+            print(f"Scenario {result.scenario} via {result.engine_used}: feasible={result.feasible}, objective={result.objective_score}, {result.elapsed_seconds:.1f}s")
+            print(f"metrics: {result.metrics}")
+            for line in result.explanation["summary"]:
+                print(f"  - {line}")
+            for warning in result.warnings:
+                print(f"WARNING: {warning}")
+            print(f"Wrote {out_dir}\n")
+            if not result.feasible:
+                exit_code = 1
     except SolveError as exc:
         print(f"ERROR: {exc}")
         return 2
-
-    # No per-engine suffix for cpsat (the primary engine, matching the committed
-    # deliverable layout) — see src/cpsat_engine.py's main() for why.
-    out_dir = args.out or Path("outputs") / (f"scenario_{args.scenario}" + ("_greedy_only" if args.engine == "greedy" else ""))
-    result.write(out_dir)
-    print(f"Scenario {result.scenario} via {result.engine_used}: feasible={result.feasible}, objective={result.objective_score}, {result.elapsed_seconds:.1f}s")
-    print(f"metrics: {result.metrics}")
-    for line in result.explanation["summary"]:
-        print(f"  - {line}")
-    for warning in result.warnings:
-        print(f"WARNING: {warning}")
-    print(f"Wrote {out_dir}")
-    return 0 if result.feasible else 1
+    return exit_code
 
 
 if __name__ == "__main__":
