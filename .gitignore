@@ -3,6 +3,7 @@ __pycache__/
 *.pyc
 .DS_Store
 .claude/
+.env
 
 # outputs/scenario_{A,B,C}/*.csv + report.json ARE committed on purpose — they
 # are Deliverable #1 ("Public Test Results", PS1_README.md §4 /
